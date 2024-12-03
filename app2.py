@@ -54,7 +54,7 @@ if st.button("Submit"):
     score = 0
     for idx, q in enumerate(questions):
         if user_answers[idx] == q["answer"]:
-            st.success(f"Correct! {q['question']} -> {user_answers[idx]}")
+            st.success(f"Correct!{idx}.{q['question']} -> {user_answers[idx]}")
             score += 1
         else:
             st.error(f"Incorrect. {q['question']} -> Your answer: {user_answers[idx]}, Correct answer: {q['answer']}")
