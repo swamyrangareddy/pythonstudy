@@ -45,16 +45,18 @@ for idx, q in enumerate(questions):
         f"Choose an answer for Question {idx + 1}:",
         q["options"],
         key=idx,
-        index=0
+        index=None
     )
     user_answers[idx] = selected_option
 
 # Submit button
 if st.button("Submit"):
+    score = 0
     for idx, q in enumerate(questions):
-        if user_answers[idx] == "Select an option":
-            st.warning(f"Please select an option for Question {idx + 1}")
-        elif user_answers[idx] == q["answer"]:
+        if user_answers[idx] == q["answer"]:
             st.success(f"Correct! {q['question']} -> {user_answers[idx]}")
+            score += 1
         else:
             st.error(f"Incorrect. {q['question']} -> Your answer: {user_answers[idx]}, Correct answer: {q['answer']}")
+    st.info(f"total score is: {score} / {len(questions)}")
+
